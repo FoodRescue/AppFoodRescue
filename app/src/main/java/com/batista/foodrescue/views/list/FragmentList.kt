@@ -47,11 +47,16 @@ class FragmentList : Fragment(), ProdutoClickListener {
         viewModel.listProduct()
         lifecycleScope.launch {
             viewModel.myQueryResponse.collect { response ->
-                adapter.setData(response)
+                if (!response.isNullOrEmpty()) {
+                    binding.layoutAnimation.visibility = View.GONE
+                    adapter.setData(response)
+                } else {
+                    binding.layoutAnimation.visibility = View.VISIBLE
+                    adapter.setData(response)
+                }
             }
         }
-
-        viewModel.progressBarVisibility.observe(viewLifecycleOwner){visibility ->
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) { visibility ->
             binding.progressBar.visibility = visibility
         }
 
@@ -98,6 +103,7 @@ class FragmentList : Fragment(), ProdutoClickListener {
         }
         snackBar.show()
     }
+
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()

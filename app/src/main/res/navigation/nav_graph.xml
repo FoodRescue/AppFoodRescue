@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentTelaLogin"
-        android:name="com.batista.foodrescue.views.TelaLogin"
+        android:name="com.batista.foodrescue.views.login.TelaLogin"
         android:label="@string/label_tela_login"
         tools:layout="@layout/fragment_tela_login">
         <action

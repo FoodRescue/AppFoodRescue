@@ -1,4 +1,4 @@
-package com.batista.foodrescue.views
+package com.batista.foodrescue.views.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,7 +30,7 @@ class TelaLogin : Fragment() {
             if (usuario == binding.usuario.text.toString() && psw == binding.senha.text.toString()) {
                 findNavController().navigate(R.id.action_fragmentTelaLogin_to_fragmentTelaListaProdutos)
             } else {
-                Toast.makeText(requireContext(), "Email ou senha inválidos!", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), "Usuário ou senha inválidos!", Toast.LENGTH_LONG)
                     .show()
             }
         }
