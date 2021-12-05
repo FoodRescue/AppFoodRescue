@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //WindowCompat.setDecorFitsSystemWindows(window, false)
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -38,12 +36,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragmentTelaForm ->
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
-
-           /* if (destination.id == R.id.fragmentProdutos) {
-                supportActionBar?.setDisplayHomeAsUpEnabled(false)
-            } else {
-                supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            }*/
         }
 
 

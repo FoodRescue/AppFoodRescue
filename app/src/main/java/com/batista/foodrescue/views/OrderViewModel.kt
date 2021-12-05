@@ -1,6 +1,8 @@
 package com.batista.foodrescue.views
 
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +21,8 @@ import javax.inject.Inject
 class OrderViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
+    private var _progressBarVisibility: MutableLiveData<Int> = MutableLiveData()
+    val progressBarVisibility: LiveData<Int> = _progressBarVisibility
 
     val selectedDateLiveData: MutableLiveData<String> = MutableLiveData()
 
@@ -27,7 +31,7 @@ class OrderViewModel @Inject constructor(
     lateinit var myQueryResponse: Flow<List<Produto>>
 
     init {
-        val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val date = formatter.format(Date())
         selectedDateLiveData.postValue(date.toString())
 
@@ -38,6 +42,7 @@ class OrderViewModel @Inject constructor(
 
     fun listProduct() {
         viewModelScope.launch {
+            _progressBarVisibility.postValue(View.VISIBLE)
             try {
                 val response = repository.listProduct()
                 if (response.isSuccessful) {
@@ -50,8 +55,9 @@ class OrderViewModel @Inject constructor(
                             repository.insertProduct(product)
                         }
                     }
+                    _progressBarVisibility.postValue(View.GONE)
                 } else {
-                    Log.d("msgErro", "Erro: ${response.errorBody().toString()}")
+                    Log.d("msgEntro", "Erro: ${response.errorBody().toString()}")
                 }
             } catch (e: Exception) {
                 Log.d("msg", e.message.toString())

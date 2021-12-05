@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.batista.foodrescue.R
-import com.batista.foodrescue.views.list.adapter.AdapterProduct
-import com.batista.foodrescue.views.list.adapter.ProdutoClickListener
-import com.batista.foodrescue.databinding.FragmentProdutosBinding
 import com.batista.foodrescue.data.model.Produto
+import com.batista.foodrescue.databinding.FragmentProdutosBinding
 import com.batista.foodrescue.views.OrderViewModel
 import com.batista.foodrescue.views.SwipeToDelete
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.batista.foodrescue.views.list.adapter.AdapterProduct
+import com.batista.foodrescue.views.list.adapter.ProdutoClickListener
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -51,18 +50,10 @@ class FragmentList : Fragment(), ProdutoClickListener {
                 adapter.setData(response)
             }
         }
-        /*
 
-        viewModel.myDeleteResponse.observe(viewLifecycleOwner, {
-            viewModel.listProduct()
-            Toast.makeText(
-                context, "Produto deletado!",
-                Toast.LENGTH_LONG
-            ).show()
-        })
-
-
-         */
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner){visibility ->
+            binding.progressBar.visibility = visibility
+        }
 
         binding.floatingActionButton.setOnClickListener {
             viewModel.productSelected = null
@@ -106,6 +97,15 @@ class FragmentList : Fragment(), ProdutoClickListener {
             viewModel.addProduto(produto)
         }
         snackBar.show()
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
 }

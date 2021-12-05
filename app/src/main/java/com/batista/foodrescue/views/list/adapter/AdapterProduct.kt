@@ -34,7 +34,7 @@ class AdapterProduct(
         val textNome = view.findViewById<TextView>(R.id.textNomeProduto)
         val textStatus = view.findViewById<TextView>(R.id.textStatus)
         val textData = view.findViewById<TextView>(R.id.textData)
-        val buttonEdit = view.findViewById<ImageView>(R.id.buttonEdit)
+        val textQtd = view.findViewById<TextView>(R.id.textQtd)
         val buttonExcluir = view.findViewById<ImageView>(R.id.buttonExcluir)
     }
 
@@ -45,7 +45,7 @@ class AdapterProduct(
         holder.textNome.text = produto.name
         holder.textStatus.text = produto.status
         holder.textData.text = produto.dueDate
-        holder.textStatus.text = produto.status
+        holder.textQtd.text = produto.assignetTo
 
         holder.buttonExcluir.setOnClickListener {
             showConfirmationDialog(produto, holder.itemView.context)
