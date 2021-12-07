@@ -54,6 +54,7 @@ class FragmentForm : Fragment(), TimePickerListener, AdapterView.OnItemSelectedL
                 binding.editNome.text.toString(),
                 binding.editDesc.text.toString(),
                 binding.editQtd.text.toString(),
+                binding.editStatus.text.toString()
             )
 
             if (dadosValidados == true) {
@@ -161,9 +162,9 @@ class FragmentForm : Fragment(), TimePickerListener, AdapterView.OnItemSelectedL
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
     }
-    private fun validaForm(validNome: String, validDescricao: String, validQuant: String) {
+    private fun validaForm(validNome: String, validDescricao: String, validQuant: String, validStatus: String) {
 
-        if ((TextUtils.isEmpty(validNome) || TextUtils.isEmpty(validDescricao) || TextUtils.isEmpty(validQuant))) {
+        if ((TextUtils.isEmpty(validNome) || TextUtils.isEmpty(validDescricao) || TextUtils.isEmpty(validQuant)) || TextUtils.isEmpty(validStatus)) {
 
             return Toast.makeText(context, "Algum campo solicitado está em branco!", Toast.LENGTH_SHORT).show()
 
