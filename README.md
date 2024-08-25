@@ -37,7 +37,7 @@ da produção, o mesmo pode ser acompanhado através de um status facilmente edi
 <h2>Team </h2>
 
 <h3>Fernando Batista </h3>
-<h4>https://www.linkedin.com/in/fernando-batista-8212811ba/  </h4>
+<h4>https://www.linkedin.com/in/fernandobah00/  </h4>
 
 <h3>Lucas Caetano  </h3>
 <h4>https://www.linkedin.com/in/lucas-caetano-4685251b9/  </h4>
