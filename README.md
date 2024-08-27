@@ -12,12 +12,12 @@ da produção, o mesmo pode ser acompanhado através de um status facilmente edi
 - ViewBinding
 - Room
 - MVVM
-- Live Data
+- LiveData
 - Coroutines
-- Date Picker
-- Swipe to Delete
-- Navigation component
-- Animation (Lottie File)
+- DatePicker
+- SwipeToDelete
+- Navigation components
+- Animation (LottieFiles)
 
 ## Funções 
 |<img src="https://github.com/FoodRescue/AppFoodRescue/blob/master/img1.jpg" width="160" height="320"/>|
