@@ -9,6 +9,7 @@ da produção, o mesmo pode ser acompanhado através de um status facilmente edi
 </p>
 
 ## Tecnologias Usadas 
+- ViewBinding
 - Room
 - MVVM
 - Live Data
